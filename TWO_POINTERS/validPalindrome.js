@@ -6,16 +6,15 @@ function isPalindrome(s) {
     let endPointer = s.length - 1;
 
     while(startPointer < endPointer) {
-        if(s[startPointer] === s[endPointer]) {
-            startPointer++;
-            endPointer--;
-
-        } else {
-            return false
+        if(s[startPointer] !== s[endPointer]) {
+           return false
         }
+
+        startPointer++;
+        endPointer--;
     }
 
-    return false;
+    return true;
 }
 
 console.log(isPalindrome('kayak'))
