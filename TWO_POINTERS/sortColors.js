@@ -28,4 +28,4 @@ function sortColors(colors){
     return colors;
 }
 
-console.log(sortColors([0,1,0]))
+console.log(sortColors([0,1,2,0]))

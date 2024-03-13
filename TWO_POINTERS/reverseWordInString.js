@@ -22,5 +22,5 @@ function reverseWords(str) {
     return result.trim();
 }
 
-console.log(reverseWords("Hello  world"));
+console.log(reverseWords("Hello   world"));
 console.log(reverseWords("cat fish"));
