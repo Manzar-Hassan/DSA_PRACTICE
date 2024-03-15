@@ -27,6 +27,30 @@ class LinkedList {
             });
         };
 
+        // returns the number of nodes in the linked list
+        this.getLength = function (head) {
+            let length = 0,
+                temp = head;
+            while (temp != null) {
+                length++;
+                temp = temp.next;
+            }
+            return length;
+        }
+
+        // returns the node at the specified position(index) of the linked list
+        this.getNode = function (head, pos) {
+            if (pos !== -1) {
+                let p = 0;
+                let ptr = head;
+                while (p < pos) {
+                    ptr = ptr.next;
+                    p += 1;
+                }
+                return ptr;
+            }
+        }
+
         // This method will display the elements of the linked list.
         this.display = function () {
             let result = "",
@@ -44,35 +68,30 @@ class LinkedList {
     }
 }
 
-function removeNthLastNode(head, n) {
-    let fast = head;
-    let slow = head;
+function detectCycle(head) {
 
-    for (let i = 0; i < n; i++) {
-        if (fast === null) {
-            return head;
+    let slowPointer = head;
+    let fastPointer = head;
+
+    while (fastPointer !== null && fastPointer.next !== null) {
+        slowPointer = slowPointer.next;
+        fastPointer = fastPointer.next.next;
+
+        if (fastPointer === slowPointer) {
+            return true
         }
-        fast = fast.next;
     }
 
-    if (fast === null) {
-        return head.next;
-    }
-
-    while (fast.next !== null) {
-        fast = fast.next;
-        slow = slow.next;
-    }
-
-    slow.next = slow.next.next;
-
-    return head;
+    return false;
 }
 
 let list = new LinkedList();
-list.createLinkedList([23,28,10,5,67,39,70,28]);
-console.log(list.display());
+list.createLinkedList([2, 4, 6, 8, 10]);
 
-removeNthLastNode(list.head, 8);
+const requiredNode = list.getNode(list.head, 1)
+const lastNode = list.getNode(list.head, list.getLength(list.head) - 1)
 
-console.log(list.display());
+lastNode.next = requiredNode
+
+console.log(detectCycle(list.head))
+
