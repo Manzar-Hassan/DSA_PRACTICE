@@ -23,4 +23,4 @@ function isHappyNumber(n) {
     return fast === 1;
 }
 
-console.log(isHappyNumber())
+console.log(isHappyNumber(4))

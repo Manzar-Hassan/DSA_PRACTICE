@@ -88,10 +88,11 @@ function detectCycle(head) {
 let list = new LinkedList();
 list.createLinkedList([2, 4, 6, 8, 10]);
 
+// console.log(list.display())
+
 const requiredNode = list.getNode(list.head, 1)
 const lastNode = list.getNode(list.head, list.getLength(list.head) - 1)
 
 lastNode.next = requiredNode
 
 console.log(detectCycle(list.head))
-
